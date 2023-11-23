@@ -1,0 +1,3 @@
+[Webhooks] Données postées à top.gg
+[status] Status du bot refresh (34 serveurs)
+[Webhooks] Données postées à top.gg

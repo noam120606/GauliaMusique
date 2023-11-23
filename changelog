@@ -1,0 +1,27 @@
+# Changelog 1.0.1
+
+## Nouvelles commandes :
+
+`/shuffle` : Active ou non le choix aléatoire de la musique
+> Demande d'être dans le même salon vocal que le Bot, en cours de lecture avec une queue contenant plus d'un titre.
+> Aucune permission ne vous est demandée
+> Envoie une confirmation en message éphémère et une annonce embed (comme pour le skip)
+
+`/suggest` : Envoie une suggestion pour le bot depuis n'importe quel serveur.
+> Aucune conditions particulières ne sont requises.
+> Aucune permission ne vous est demandée
+> Vous ouvre une boite de texte ou vous devez mettre votre suggestion
+
+`/changelog` : Permets d'accéder à ce message et tous les futures changelog
+> Aucune conditions particulières ne sont requises.
+> Aucune permission ne vous est demandée
+> Vous envoie ce message
+
+## Fonctionalitées :
+
+- Bouton rapide pour activer ou non la commande shuffle (et change de couleur selon le status)
+
+## Autre :
+
+- Ajout d'une limite de queue (`1000 musiques`)
+- Changement des couleurs des boutons rapides (plus logique je trouve)

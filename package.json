@@ -1,0 +1,29 @@
+{
+  "name": "gaulia-musique",
+  "version": "1.0.2",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discord-player/extractor": "^4.4.5",
+    "@discordjs/opus": "^0.9.0",
+    "@top-gg/sdk": "^3.1.6",
+    "cpu-stat": "^2.0.1",
+    "discord-player": "^6.6.6",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "isomorphic-unfetch": "^4.0.2",
+    "mysql": "^2.18.1",
+    "os": "^0.1.2",
+    "play-dl": "^1.9.7",
+    "pterosocket": "^1.0.6",
+    "spotify-url-info": "^3.2.9",
+    "topgg-autoposter": "^2.0.1"
+  },
+  "description": ""
+}
