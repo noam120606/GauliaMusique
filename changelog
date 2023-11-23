@@ -1,27 +1,18 @@
-# Changelog 1.0.1
+# Changelog 1.0.3
 
 ## Nouvelles commandes :
 
-`/shuffle` : Active ou non le choix aléatoire de la musique
-> Demande d'être dans le même salon vocal que le Bot, en cours de lecture avec une queue contenant plus d'un titre.
-> Aucune permission ne vous est demandée
-> Envoie une confirmation en message éphémère et une annonce embed (comme pour le skip)
+`/blindtest start` : Crée un blindtest
+> "type": type du blindtest, une playlist custom ou prédéfini
+> "taille": nombre de musiques joué (20 par défaut)
+> "lien": Lien de la playlist (requis si vous utilisez le type custom, sinon ce paramètre est ignoré) :warning: **SEULEMENT PLAYLIST SPOTIFY**
 
-`/suggest` : Envoie une suggestion pour le bot depuis n'importe quel serveur.
-> Aucune conditions particulières ne sont requises.
-> Aucune permission ne vous est demandée
-> Vous ouvre une boite de texte ou vous devez mettre votre suggestion
+`/blindtest answer` : Envoyer sa réponse sur ma musique en cours
+> "reponse": Votre réponse
 
-`/changelog` : Permets d'accéder à ce message et tous les futures changelog
-> Aucune conditions particulières ne sont requises.
-> Aucune permission ne vous est demandée
-> Vous envoie ce message
+`/blindtest leaderboard` : Voir le leaderboard des points actuels
 
-## Fonctionalitées :
+`/blindtest stop` : Coupe le blindtest avant la fin des musiques
 
-- Bouton rapide pour activer ou non la commande shuffle (et change de couleur selon le status)
-
-## Autre :
-
-- Ajout d'une limite de queue (`1000 musiques`)
-- Changement des couleurs des boutons rapides (plus logique je trouve)
+## Autre
+- Le bot se redémare chaque jours a 5h du matin.
