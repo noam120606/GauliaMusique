@@ -1,5 +1,9 @@
 {
     "suggestChannel": "1111334491101855805",
     "consoleChannel": "1119929276951711825",
-    "errorChannel": "1119935776357109813"
+    "errorChannel": "1119935776357109813",
+    "webhooklog": {
+        "channel": "1107240739836014633",
+        "username": "Gaulia Log"
+    }
 }
