@@ -26,6 +26,7 @@ module.exports = {
         if (botVC && botVC != memberVC) return await interaction.followUp("Je suis déja utilisé dans un autre salon vocal.");
         const queue = client.player.queues.get(interaction.guild);
         if (client.player.blindtestdata[interaction.guild.id]?.isStop === false) return await interaction.followUp("Vous ne pouvez pas utiliser cette commande pendant le mode blindtest");
+        if (!memberVC.joinable) return await interaction.followUp("Je n'ai pas la permission de rejoindre ce salon !");
 
         try {
             const { track } = await client.player.play(memberVC, song, {

@@ -67,6 +67,7 @@ module.exports = {
             const queue = client.player.queues.get(interaction.guild);
             
             if (client.player.blindtestdata[interaction.guild.id]?.isStop === false) return await interaction.followUp("Il y a déja un blindtest en cours !");
+            if (!memberVC.joinable) return await interaction.followUp("Je n'ai pas la permission de rejoindre ce salon !");
             await queue?.node?.stop(true);
             let type = interaction.options.getString('type');
             
