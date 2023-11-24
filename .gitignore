@@ -1,3 +1,4 @@
 node_modules
 .env
 consolehistory.txt
+.dev_ressources
