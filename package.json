@@ -14,6 +14,7 @@
     "cpu-stat": "^2.0.1",
     "discord-player": "^6.6.6",
     "discord.js": "^14.14.1",
+    "disstat": "^0.2.9",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
@@ -21,8 +22,8 @@
     "mysql": "^2.18.1",
     "os": "^0.1.2",
     "play-dl": "^1.9.7",
-    "pterosocket": "^1.0.6",
     "spotify-url-info": "^3.2.9",
+    "statcord.js": "^3.4.3",
     "topgg-autoposter": "^2.0.1"
   },
   "description": ""
