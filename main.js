@@ -10,6 +10,14 @@ require('dotenv').config({ path: "./.env" });
 const express = require("express");
 const app = express();
 app.listen(process.env.PORT);
+const { rateLimit } = require('express-rate-limit');
+const limiter = rateLimit({
+	windowMs: 60 * 60 * 1000,
+	limit: 20,
+	standardHeaders: 'draft-7',
+	legacyHeaders: false,
+});
+app.use(limiter);
 
 const { Player } = require('discord-player');
 const { Client, IntentsBitField, Collection } = require('discord.js');
