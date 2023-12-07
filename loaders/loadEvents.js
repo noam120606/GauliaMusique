@@ -9,7 +9,6 @@ module.exports = async client => {
             const event = require(`../events/${dir}/${file}`);
             if (dir === "music") client.player.events.on(event.name, (...args) => event.run(client, ...args));
             if (dir === "client") client.on(event.name, (...args) => event.run(client, ...args));
-            if (dir === "pterosocket") client.pterosocket.on(event.name, (...args) => event.run(client, ...args));
             count++;
         };
     };

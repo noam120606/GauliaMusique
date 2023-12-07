@@ -10,17 +10,19 @@ require('dotenv').config({ path: "./.env" });
 const express = require("express");
 const app = express();
 app.listen(process.env.PORT);
+const { rateLimit } = require('express-rate-limit');
+const limiter = rateLimit({
+	windowMs: 60 * 60 * 1000,
+	limit: 20,
+	standardHeaders: 'draft-7',
+	legacyHeaders: false,
+});
+app.use(limiter);
 
-const { writeFile } = require('fs');
-writeFile("consolehistory.txt", "", ()=>{});
-
-const { pterosocket } = require('pterosocket');
 const { Player } = require('discord-player');
 const { Client, IntentsBitField, Collection } = require('discord.js');
-const client = new Client({ intents: new IntentsBitField(3276799) });
-
+const client = new Client({ intents: new IntentsBitField(process.env.INTENTS) });
 client.dev = process.env.DEVBOT=="1"?true:false;
-client.pterosocket = new pterosocket(process.env.pteroURL, process.env.pteroAPIKEY, process.env.pteroSERVER);
 client.commands = new Collection();
 client.config = require('./config.json');
 client.player = new Player(client, {

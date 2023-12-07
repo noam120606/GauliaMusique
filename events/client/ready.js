@@ -1,8 +1,10 @@
 const { Events, ActivityType } = require('discord.js');
+const DisStat = require("disstat");
 
 module.exports = {
     name: Events.ClientReady,
     async run(client) {
+
         client.application.commands.set(client.commands.map(command => command.data));
         client.user.setActivity(`${client.guilds.cache.size}/75 serveurs`, {type: ActivityType.Watching});
         setInterval(() => {
