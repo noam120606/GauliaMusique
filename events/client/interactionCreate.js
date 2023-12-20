@@ -4,11 +4,11 @@ module.exports = {
     name: Events.InteractionCreate,
     async run(client, interaction) {
 
-        // if (!client.dev) client.disstat.postEvent(Events.InteractionCreate, interaction.user.id);
+        if (!client.dev) client.disstat.postEvent(Events.InteractionCreate, interaction.user.id);
 
         interaction.custom_data = {}
         if (interaction.type === InteractionType.ApplicationCommand) {
-            // if (!client.dev) client.disstat.postCommand(interaction.commandName, interaction.user.id);
+            if (!client.dev) client.disstat.postCommand(interaction.commandName, interaction.user.id);
             const command = client.commands.get(interaction.commandName);
             await command.run(interaction);
             console.log(`[Interaction] Commande "${interaction.commandName}" par ${interaction.user.username} (${interaction.user.id})`);
