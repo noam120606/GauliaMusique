@@ -62,7 +62,7 @@ module.exports = {
             
             
         if (client.player.blindtestdata[queue.metadata.guild.id] === undefined || client.player.blindtestdata[queue.metadata.guild.id].isStop === true) {
-            await queue.metadata.channel.send({embeds: [playembed], components: [row1, row2] });
+            try { await queue.metadata.channel.send({embeds: [playembed], components: [row1, row2] }) } catch {};
         } else {
             
             let musicData = client.player.blindtestdata[queue.metadata.guild.id].getTracks().filter((musique) => musique.uri === track.metadata.source.uri)[0];
@@ -105,7 +105,7 @@ module.exports = {
                             .setColor("#ffffff")
                             .setDescription(stringDesc);
 
-                            await queue.metadata.channel.send({embeds: [endEmbed]});
+                            try { await queue.metadata.channel.send({embeds: [endEmbed]}) } catch {};
                             client.player.blindtestdata[queue.metadata.guild.id].stop()
                         }
 
