@@ -15,10 +15,11 @@ module.exports = {
 
     run: async (interaction) => {
 
+        let client = interaction.client;
+
         const premium = await isPremium(client, interaction.guild.id);
         const QueueLimit = premium?1000:200;
 
-        let client = interaction.client;
         await interaction.deferReply({ephemeral: true});
         const song = interaction.options.getString("musique");
 
