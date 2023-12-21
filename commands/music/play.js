@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
+const isPremium = require('../../functions/isPremium');
 
 module.exports = {
     
@@ -14,7 +15,8 @@ module.exports = {
 
     run: async (interaction) => {
 
-        const QueueLimit = 1000;
+        const premium = await isPremium(client, interaction.guild.id);
+        const QueueLimit = premium?1000:200;
 
         let client = interaction.client;
         await interaction.deferReply({ephemeral: true});
