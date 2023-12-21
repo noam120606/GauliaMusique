@@ -2,6 +2,8 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const fetch = require('isomorphic-unfetch')
 const { getTracks } = require('spotify-url-info')(fetch)
 const BlindtestServerData = require("../../class/BlindtestServerData");
+const isPremium = require('../../functions/isPremium');
+const requirePremium = require('../../functions/requirePremium');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -48,13 +50,15 @@ module.exports = {
         )
         .addSubcommand(subcommand => subcommand
             .setName('leaderboard')
-            .setDescription('Affiche le leaderboard du blindtest en cours')
+            .setDescription('⭐ Affiche le leaderboard du blindtest en cours')
         ),
 
     run: async (interaction) => {
 
         let client = interaction.client;
         await interaction.deferReply({ephemeral: true});
+
+        
 
         if (interaction.options.getSubcommand() === "start") {
 
@@ -122,6 +126,7 @@ module.exports = {
         
         
         } else if (interaction.options.getSubcommand() === "answer") {
+            const premium = await isPremium(client, interaction.guild.id);
         
             const memberVC = interaction.member.voice.channel;
             const botVC = (await interaction.guild.members.fetchMe()).voice.channel;
@@ -142,7 +147,7 @@ module.exports = {
                 client.player.blindtestdata[interaction.guild.id].vote(interaction.user);
                 let points = await client.player.blindtestdata[interaction.guild.id].appendPoint(interaction.user);
                 interaction.followUp(`Bravo ! Vous avez bien trouvé la musique qui est [${trackData.name}](${trackData.url}) (\`${trackData.stringartist}\`)`);
-                interaction.channel.send(`✅ <@${interaction.user.id}> a trouvé la bonne réponse !\nIl a maintenant ${points} points`);
+                interaction.channel.send(`✅ <@${interaction.user.id}> a trouvé la bonne réponse !${premium?`\nIl a maintenant ${points} points !`:""}`);
             } else interaction.followUp(`Bien tenté, mais ce n'est pas la bonne réponse.`);
 
             function formatReponse(rep) {
@@ -198,6 +203,8 @@ module.exports = {
         
         
         } else if (interaction.options.getSubcommand() === "leaderboard") {
+            const premium = await isPremium(client, interaction.guild.id);
+            if (!premium) return await requirePremium(interaction);
         
             const memberVC = interaction.member.voice.channel;
             const botVC = (await interaction.guild.members.fetchMe()).voice.channel;

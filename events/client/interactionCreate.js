@@ -1,5 +1,6 @@
 const { Events, InteractionType } = require('discord.js');
-
+const isPremium = require('../../functions/isPremium');
+const requirePremium = require('../../functions/requirePremium');
 module.exports = {
     name: Events.InteractionCreate,
     async run(client, interaction) {
@@ -10,7 +11,8 @@ module.exports = {
         if (interaction.type === InteractionType.ApplicationCommand) {
             if (!client.dev) client.disstat.postCommand(interaction.commandName, interaction.user.id);
             const command = client.commands.get(interaction.commandName);
-            await command.run(interaction);
+            if (command.premium && !(await isPremium(client, interaction.guild.id))) return await requirePremium(interaction);
+            else await command.run(interaction);
             console.log(`[Interaction] Commande "${interaction.commandName}" par ${interaction.user.username} (${interaction.user.id})`);
         };
         if (interaction.isButton()) {

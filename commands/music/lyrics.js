@@ -3,10 +3,12 @@ const { lyricsExtractor } = require('@discord-player/extractor');
 const lyricsFinder = lyricsExtractor(/* 'optional genius API key' */);
 
 module.exports = {
+
+    premium: true,
     
     data: new SlashCommandBuilder()
     .setName("lyrics")
-    .setDescription("Reçois les paroles de la musique en cours")
+    .setDescription("⭐ Reçois les paroles de la musique en cours")
     .setDMPermission(false),
 
     run: async (interaction) => {
