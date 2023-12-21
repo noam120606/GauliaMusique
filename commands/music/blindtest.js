@@ -56,12 +56,12 @@ module.exports = {
     run: async (interaction) => {
 
         let client = interaction.client;
-        await interaction.deferReply({ephemeral: true});
+        
 
         
 
         if (interaction.options.getSubcommand() === "start") {
-
+            await interaction.deferReply({ephemeral: true});
             const memberVC = interaction.member.voice.channel;
             const botVC = (await interaction.guild.members.fetchMe()).voice.channel;
             if (!memberVC) return await interaction.followUp("Tu n'es pas dans un salon vocal.");
@@ -126,6 +126,7 @@ module.exports = {
         
         
         } else if (interaction.options.getSubcommand() === "answer") {
+            await interaction.deferReply({ephemeral: true});
             const premium = await isPremium(client, interaction.guild.id);
         
             const memberVC = interaction.member.voice.channel;
@@ -165,6 +166,9 @@ module.exports = {
         
 
         } else if (interaction.options.getSubcommand() === "stop") {
+            const premium = await isPremium(client, interaction.guild.id);
+
+            await interaction.deferReply({ephemeral: true});
             
             const memberVC = interaction.member.voice.channel;
             const botVC = (await interaction.guild.members.fetchMe()).voice.channel;
@@ -196,8 +200,9 @@ module.exports = {
             .setTitle("🎵 Résultats du blindtest")
             .setColor("#ffffff")
             .setDescription(stringDesc==""?"Personne n'a marqué de points":stringDesc);
-            
-            await interaction.channel.send({embeds: [embed, resultEmbed]});
+            let embeds = [embed];
+            if (premium) embeds.push(resultEmbed);
+            await interaction.channel.send({embeds});
 
             await interaction.followUp("Le blindtest a bien été stop !")
         
@@ -208,12 +213,12 @@ module.exports = {
         
             const memberVC = interaction.member.voice.channel;
             const botVC = (await interaction.guild.members.fetchMe()).voice.channel;
-            if (!memberVC) return await interaction.followUp("Tu n'es pas dans un salon vocal.");
-            if (botVC && botVC != memberVC) return await interaction.followUp("Je suis déja utilisé dans un autre salon vocal.");
-            if (client.player.blindtestdata[interaction.guild.id] === undefined || client.player.blindtestdata[interaction.guild.id].isStop === true) return await interaction.followUp("Vous ne pouvez utiliser cette commande que pendant le mode blindtest");
+            if (!memberVC) return await interaction.reply({content:"Tu n'es pas dans un salon vocal.", ephemeral: true});
+            if (botVC && botVC != memberVC) return await interaction.reply({content:"Je suis déja utilisé dans un autre salon vocal.", ephemeral:true});
+            if (client.player.blindtestdata[interaction.guild.id] === undefined || client.player.blindtestdata[interaction.guild.id].isStop === true) return await interaction.reply({content:"Vous ne pouvez utiliser cette commande que pendant le mode blindtest",ephemeral:true});
         
             const embed = client.player.blindtestdata[interaction.guild.id].getLeaderboard(interaction.user, true);
-            interaction.followUp({embeds: [embed]});
+            interaction.reply({embeds: [embed], ephemeral: true});
         };
     }
 };
