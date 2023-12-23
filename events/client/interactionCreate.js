@@ -7,8 +7,11 @@ module.exports = {
 
         if (!client.dev) client.disstat.postEvent(Events.InteractionCreate, interaction.user.id);
 
+        client.gauliaStats.postEvent(Events.InteractionCreate);
+
         interaction.custom_data = {}
         if (interaction.type === InteractionType.ApplicationCommand) {
+            client.gauliaStats.postCommand(interaction.commandName);
             if (!client.dev) client.disstat.postCommand(interaction.commandName, interaction.user.id);
             const command = client.commands.get(interaction.commandName);
             if (command.premium && !(await isPremium(client, interaction.guild.id))) return await requirePremium(interaction);

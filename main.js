@@ -4,6 +4,7 @@ const loadDatabase = require('./loaders/loadDatabase');
 const manageTopggVote = require("./managers/topgg-vote");
 const manageTopggPost = require("./managers/topgg-autopost");
 const manageUptimerobot = require("./managers/uptimerobot");
+const Stats = require('./gaulia-stats');
 
 require('dotenv').config({ path: "./.env" });
 
@@ -34,6 +35,7 @@ client.player = new Player(client, {
 });
 client.player.extractors.loadDefault();
 client.player.blindtestdata = {};
+client.gauliaStats = new Stats(process.env.GAULIASTATSkey, client.dev);
 
 (async () => {
     client.db = await loadDatabase(client);

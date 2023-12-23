@@ -14,6 +14,7 @@ module.exports = async (client, app) => {
                 else count = 1;
                 client.users.cache.get(vote.user).send(`Merci beaucoup pour ton vote ! :heart:\nTu as au total voté \`${count}\` fois !`);
                 console.log(`[Vote] ${client.users.cache.get(vote.user).username} (${client.users.cache.get(vote.user).id}) à voté pour gaulia, total de ${count} vote(s)`)
+                client.gauliaStats.postVote();
             })
         })
     );

@@ -17,8 +17,6 @@ module.exports = async (client, guildId) => {
                     resolve(false);
                 }
             });
-        } catch {
-            resolve(false)
-        }
-    })
-}
+        } catch { resolve(false) };
+    });
+};

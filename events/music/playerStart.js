@@ -3,6 +3,8 @@ module.exports = {
     name: "playerStart",
     async run(client, queue, track) {
 
+        client.gauliaStats.postEvent("player-start");
+
         const playembed = new EmbedBuilder()
         .setTitle("🎵 Musique en cours")
         .setColor("#ffffff")
