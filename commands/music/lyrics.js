@@ -3,6 +3,8 @@ const { lyricsExtractor } = require('@discord-player/extractor');
 const lyricsFinder = lyricsExtractor(/* 'optional genius API key' */);
 
 module.exports = {
+
+    premium: true,
     
     data: new SlashCommandBuilder()
     .setName("lyrics")

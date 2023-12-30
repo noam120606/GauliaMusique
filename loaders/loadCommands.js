@@ -7,8 +7,10 @@ module.exports = async client => {
         const filesDirs = readdirSync(`./commands/${dir}/`).filter(f => f.endsWith('.js'));
         for (const file of filesDirs) {
             const command = require(`../commands/${dir}/${file}`);
-            client.commands.set(command.data.toJSON().name, command);
-            count++;
+            if (!command.disable) {
+                client.commands.set(command.data.toJSON().name, command);
+                count++;
+            };
         };
     };
     console.log(`[startup] ${count} commandes chargé`);

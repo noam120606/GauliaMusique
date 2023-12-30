@@ -6,6 +6,7 @@ const askGpt = require('../../functions/askgpt');
 module.exports = {
 
     premium: true,
+    disable: true,
     
     data: new SlashCommandBuilder()
     .setName("track")
