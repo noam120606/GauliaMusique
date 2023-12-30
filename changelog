@@ -1,18 +1,17 @@
-# Changelog 1.0.3
+# Changelog 1.0.4
 
-## Nouvelles commandes :
+## Nouvelles fonctionalitées :
 
-`/blindtest start` : Crée un blindtest
-> "type": type du blindtest, une playlist custom ou prédéfini
-> "taille": nombre de musiques joué (20 par défaut)
-> "lien": Lien de la playlist (requis si vous utilisez le type custom, sinon ce paramètre est ignoré) :warning: **SEULEMENT PLAYLIST SPOTIFY**
+- `/back` : Permet de retourner a la précédente musique
+- `/volume` : Permet de modifier le volume, de base a 70%, il peut être modifié au choix entre 0% et 200%
+- Ajout du bouton back au changement de musique
+- Changement de nom du bouton "Play" en "Resume" (bien plus compréhensible)
 
-`/blindtest answer` : Envoyer sa réponse sur ma musique en cours
-> "reponse": Votre réponse
+## Premium
 
-`/blindtest leaderboard` : Voir le leaderboard des points actuels
+- `/lyrics` : N'est plus une commande premium et peut être utilisé par tout le monde ! (comme avant en fait)
+- Boutons volume : Deux boutons de volume plus et volume moins qui ne s'afficheront que sur les serveurs ayant payé Gaulia Premium.
 
-`/blindtest stop` : Coupe le blindtest avant la fin des musiques
+## Bug Patch
 
-## Autre
-- Le bot se redémare chaque jours a 5h du matin.
+- `blinbdtest` : Patch du bug qui permetait la lecture de plusieurs blindtest (et ça faisait de la merde a cause des skip a répétition)

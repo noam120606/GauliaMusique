@@ -24,6 +24,7 @@ module.exports = {
         if (client.player.blindtestdata[interaction.guild.id]?.isStop === false) return await interaction.followUp("Vous ne pouvez pas utiliser cette commande pendant le mode blindtest");
 
         await queue.node.stop(true)
+        await queue.delete();
 
         await interaction.followUp("La musique a bien été coupée !")
 

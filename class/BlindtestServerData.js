@@ -1,11 +1,16 @@
 const { EmbedBuilder } = require('discord.js')
 
-module.exports = function BlindtestServerData() {
+module.exports = function BlindtestServerData(id) {
     this.userTab = [];
     this.expire = 0;
     this.isStop = false;
     this.tracks = [];
     this.voters = [];
+    this.id = id;
+
+    this.getId = () => {
+        return this.id;
+    };
 
     this.vote = (user) => {
         this.voters.push(user.id);

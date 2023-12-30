@@ -4,6 +4,7 @@ const { getTracks } = require('spotify-url-info')(fetch)
 const BlindtestServerData = require("../../class/BlindtestServerData");
 const isPremium = require('../../functions/isPremium');
 const requirePremium = require('../../functions/requirePremium');
+const generateId = require('../../functions/generateId');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -57,9 +58,6 @@ module.exports = {
 
         let client = interaction.client;
         
-
-        
-
         if (interaction.options.getSubcommand() === "start") {
             await interaction.deferReply({ephemeral: true});
             const memberVC = interaction.member.voice.channel;
@@ -89,8 +87,11 @@ module.exports = {
                         return await interaction.followUp("Le lien fourni est invalide !")
                     }
             } else data = require(`../../storage/playlists/${interaction.options.getString('type')}`);
-            
-            client.player.blindtestdata[interaction.guild.id] = new BlindtestServerData();
+
+
+            const blindtestID = generateId(32, "blinedtest");
+            interaction.custom_data["blindtestID"] = blindtestID;
+            client.player.blindtestdata[interaction.guild.id] = new BlindtestServerData(blindtestID);
             
             const songlist = data.tracks.sort(() => 0.5 - Math.random()).slice(0, songNumber);
             songlist.forEach(async song => {
@@ -180,6 +181,7 @@ module.exports = {
             client.player.blindtestdata[interaction.guild.id].stop();
             
             await queue.node.stop(true);
+            await queue.delete();
             
             const embed = new EmbedBuilder()
             .setTitle("⛔ Stop de musique")

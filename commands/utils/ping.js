@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 
 module.exports = {
     
@@ -9,6 +9,7 @@ module.exports = {
 
     run: async (interaction) => {
         let client = interaction.client;
+        
         await interaction.reply({
             content: `Le ping du bot est \`${client.ws.ping}\` ms`,
             ephemeral: true

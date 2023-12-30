@@ -1,6 +1,6 @@
 {
   "name": "gaulia-musique",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,11 +21,12 @@
     "express-rate-limit": "^7.1.5",
     "fs": "^0.0.1-security",
     "isomorphic-unfetch": "^4.0.2",
+    "mediaplex": "^0.0.9",
     "mysql": "^2.18.1",
     "os": "^0.1.2",
     "play-dl": "^1.9.7",
+    "puppeteer": "^21.6.1",
     "spotify-url-info": "^3.2.9",
-    "statcord.js": "^3.4.3",
     "topgg-autoposter": "^2.0.1"
   },
   "description": ""

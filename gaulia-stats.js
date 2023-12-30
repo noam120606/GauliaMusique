@@ -1,4 +1,4 @@
-const baseUrl = "http://gaulia-stats.noam120606.fr:20045/api";
+const baseUrl = "http://gaulia-stats.noam120606.fr:20045/api/post";
 
 module.exports = function Stats(apiKey, dev) {
     this.key = apiKey;

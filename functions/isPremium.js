@@ -1,6 +1,7 @@
 const axios = require('axios');
 
 module.exports = async (client, guildId) => {
+    if (client.dev) return true;
     return new Promise(async (resolve, reject) => {
         try {
             const response = await axios.get(`https://discord.com/api/v10/applications/${client.user.id}/entitlements`, {

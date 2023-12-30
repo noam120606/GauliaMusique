@@ -1,6 +1,7 @@
 const loadCommands = require('./loaders/loadCommands');
 const loadEvents = require('./loaders/loadEvents');
 const loadDatabase = require('./loaders/loadDatabase');
+const loadInteractions = require('./loaders/loadInteractions');
 const manageTopggVote = require("./managers/topgg-vote");
 const manageTopggPost = require("./managers/topgg-autopost");
 const manageUptimerobot = require("./managers/uptimerobot");
@@ -25,6 +26,7 @@ const { Client, IntentsBitField, Collection } = require('discord.js');
 const client = new Client({ intents: new IntentsBitField(process.env.INTENTS) });
 client.dev = process.env.DEVBOT=="1"?true:false;
 client.commands = new Collection();
+client.interactions = new Collection();
 client.config = require('./config.json');
 client.player = new Player(client, {
     ytdlOptions: {
@@ -40,6 +42,7 @@ client.gauliaStats = new Stats(process.env.GAULIASTATSkey, client.dev);
 (async () => {
     client.db = await loadDatabase(client);
     await loadCommands(client);
+    await loadInteractions(client);
     await loadEvents(client);
     await client.login(process.env.TOKEN);
 
