@@ -12,11 +12,11 @@ module.exports = async (client, app) => {
                 let count;
                 if (req[0]) count = parseInt(req[0]?.count)+1;
                 else count = 1;
-                client.users.cache.get(vote.user).send(`Merci beaucoup pour ton vote ! :heart:\nTu as au total voté \`${count}\` fois !`);
-                console.log(`[Vote] ${client.users.cache.get(vote.user).username} (${client.users.cache.get(vote.user).id}) à voté pour gaulia, total de ${count} vote(s)`)
-                client.gauliaStats.postVote();
+                try {
+                    client.users.cache.get(vote.user).send(`Merci beaucoup pour ton vote ! :heart:\nTu as au total voté \`${count}\` fois !`);
+                    console.log(`[Vote] ${client.users.cache.get(vote.user).username} (${client.users.cache.get(vote.user).id}) à voté pour gaulia, total de ${count} vote(s)`)
+                } catch {};
             })
         })
     );
-    console.log('[WebServer] module Top.gg (vote) chargé')
 }

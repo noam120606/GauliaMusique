@@ -14,8 +14,6 @@ module.exports = {
 
         await queue.node.setVolume(newVolume);
         await interaction.deferUpdate();
-        
-        console.log(`[Interaction] Bouton volume utilisé par ${interaction.user.username} (${interaction.user.id})`);
 
     }
 };

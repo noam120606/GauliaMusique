@@ -117,6 +117,10 @@ module.exports = {
             const startEmbed = new EmbedBuilder()
             .setTitle("🎵 Début du blindtest !")
             .setColor("#ffffff")
+            .setAuthor({
+                name: interaction.user.username,
+                iconURL: interaction.user.displayAvatarURL()
+            })
             .setDescription([
                 `Catégorie : \`${data.name}\``,
                 `Nombre de musiques : \`${songNumber}\``

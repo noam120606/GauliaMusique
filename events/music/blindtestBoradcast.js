@@ -6,8 +6,6 @@ module.exports = {
 
         if (client.player.blindtestdata[queue.metadata.guild.id] === undefined || client.player.blindtestdata[queue.metadata.guild.id].isStop === true) return;
 
-        client.gauliaStats.postEvent("blindtestBoradcast");
-
         const blindtestembed = new EmbedBuilder()
         .setTitle("🎵 Quel est cette musique ?")
         .setColor("#ffffff")
@@ -31,8 +29,8 @@ module.exports = {
                 .setTitle("🎵 Réponse")
                 .setColor("#ffffff")
                 .setDescription([
-                    `Titre: [${musicData.name}](${musicData.url})`,
-                    `Artiste(s): \`${musicData.stringartist}\``,
+                    `Titre: [${musicData?.name}](${musicData?.url})`,
+                    `Artiste(s): \`${musicData?.stringartist}\``,
                     ``,
                     `Prochaine musique <t:${parseInt(Date.now()/1000)+20}:R> !`
                 ].join('\n'))

@@ -46,21 +46,14 @@ module.exports = {
             .setEmoji("🔀")
             .setStyle(ButtonStyle.Secondary);
             
-        let sourceBTN = new ButtonBuilder()
-            .setLabel('Source')
-            .setEmoji("🎶")
-            .setStyle(ButtonStyle.Link);
-            track ? sourceBTN.setURL(track.url) : sourceBTN.setDisabled(true).setURL('https://google.com')
 
 		const row1 = new ActionRowBuilder()
             .addComponents(pauseBTN, playBTN, skipBTN, shuffleBTN, stopBTN);
         
-        const row2 = new ActionRowBuilder()
-            .addComponents(sourceBTN)
 
         await interaction.followUp({
             content: `Voici quelques actions rapide !`,
-            components: [row1, row2]
+            components: [row1]
         })
     }
 };

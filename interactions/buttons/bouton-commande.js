@@ -11,7 +11,5 @@ module.exports = {
 
         await command.run(interaction);
 
-        console.log(`[Interaction] Bouton commande "${commandName}" par ${interaction.user.username} (${interaction.user.id})`);
-
     }
 };

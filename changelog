@@ -1,17 +1,17 @@
-# Changelog 1.0.4
+# Changelog 1.0.5
 
-## Nouvelles fonctionalitées :
+## Nouvelles fonctionnalitées :
 
-- `/back` : Permet de retourner a la précédente musique
-- `/volume` : Permet de modifier le volume, de base a 70%, il peut être modifié au choix entre 0% et 200%
-- Ajout du bouton back au changement de musique
-- Changement de nom du bouton "Play" en "Resume" (bien plus compréhensible)
+- `/help` : Permet de connaître la liste des commandes
+- `/track` : Permet d'obtenir une description détaillée de la musique en cours (si compatible) générée par intelligence artificielle (premium)
+
+- Changement d'hébergeur pour passer sur VPS, machine plus puissante et optimisée !
+- Adoption du sharding, une majorité du backend a été modifiée pour fonctionner en cohésion avec un système de sharding pour encore plus d'optimisation !
 
 ## Premium
 
-- `/lyrics` : N'est plus une commande premium et peut être utilisé par tout le monde ! (comme avant en fait)
-- Boutons volume : Deux boutons de volume plus et volume moins qui ne s'afficheront que sur les serveurs ayant payé Gaulia Premium.
+- La commande `lyrics` devient gratuite au profit de la commande `track`, cette dernière peut donc être utilisée par tous.
 
-## Bug Patch
+## Partenariat
 
-- `blinbdtest` : Patch du bug qui permetait la lecture de plusieurs blindtest (et ça faisait de la merde a cause des skip a répétition)
+Un VPS n'est pas donné, veuillez alors remercier notre nouveau partenaire [KHeberg.fr](https://discord.gg/kheberg) qui vous permet d'écouter vos meilleures musiques sans débourser un centime !

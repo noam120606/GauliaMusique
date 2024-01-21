@@ -6,25 +6,23 @@ module.exports = {
     name: Events.InteractionCreate,
     async run(client, interaction) {
 
-        if (!client.dev) client.disstat.postEvent(Events.InteractionCreate, interaction.user.id);
-
-        client.gauliaStats.postEvent(Events.InteractionCreate);
-
         interaction.custom_data = {}
 
         switch (interaction.type) {
 
             case InteractionType.ApplicationCommand:
 
-                client.gauliaStats.postCommand(interaction.commandName);
-                if (!client.dev) client.disstat.postCommand(interaction.commandName, interaction.user.id);
-
                 const command = client.commands.get(interaction.commandName);
 
                 if (command.premium && !(await isPremium(client, interaction.guild.id))) return await requirePremium(interaction);
                 else await command.run(interaction);
 
-                console.log(`[Interaction] Commande "${interaction.commandName}" par ${interaction.user.username} (${interaction.user.id})`);
+            break;
+
+            case InteractionType.ApplicationCommandAutocomplete:
+
+                const autocompleteManager = client.commands.get(interaction.commandName).autocomplete;
+                autocompleteManager(interaction);
 
             break;
 

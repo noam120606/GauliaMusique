@@ -18,7 +18,7 @@ module.exports = {
         if (botVC != memberVC) return await interaction.followUp("Tu n'es pas dans le même salon vocal que moi.");
 
         const track = client.player.queues?.cache?.get(interaction.guildId)?.currentTrack;
-        //if (!track) return await interaction.followUp("Il n'y a pas de musiques en cours.");
+        if (!track) return await interaction.followUp("Il n'y a pas de musiques en cours.");
         
         const queue = client.player.queues.get(interaction.guild);
         if (client.player.blindtestdata[interaction.guild.id]?.isStop === false) return await interaction.followUp("Vous ne pouvez pas utiliser cette commande pendant le mode blindtest");

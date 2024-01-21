@@ -6,7 +6,6 @@ const askGpt = require('../../functions/askgpt');
 module.exports = {
 
     premium: true,
-    disable: true,
     
     data: new SlashCommandBuilder()
     .setName("track")
@@ -30,7 +29,7 @@ module.exports = {
 
         const prompt = [
             `Je vais te fournir des informations sur une musique, ton role est de me les résumer, décrit les paroles, les pensées de l'autaur, le nom, etc, tout ce qui peut être utile`,
-            `Il faut un résumé bref (si ton message final fait plus de 2000 characteres, il y aura une enorme erreur), mais précis, je compte sur toi`,
+            `Il faut un résumé bref, ton message final ne doit SOUS AUCUN PRETEXTE de 1500 characteres, je compte sur toi`,
             `ta réponse est destiné a être utilisé dans une application, ne donne donc pas de demandes, même si tu manque d'informations, essaie, si il t'es véritablement impossible de compléter ma demande, dit simplement "Désolé, une erreur interne est survenue"`,
             `L'auteur de la musique est "${track.author}", son titre est "${track.title}".`,
             `Voici les paroles :`, stringLyrics.split('\n').join("  ")
@@ -38,6 +37,6 @@ module.exports = {
 
         const response = await askGpt(prompt.join(' '));
 
-        return await interaction.followUp(response);
+        return await interaction.followUp(response.slice(0,1900));
     }
 };

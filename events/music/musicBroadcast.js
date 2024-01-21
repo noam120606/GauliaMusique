@@ -9,8 +9,6 @@ module.exports = {
         
         const premium = await isPremium(client, queue.metadata.guild.id);
 
-        client.gauliaStats.postEvent("musicBroadcast");
-
         const playembed = new EmbedBuilder()
         .setTitle("🎵 Musique en cours")
         .setColor("#ffffff")
@@ -64,18 +62,18 @@ module.exports = {
             .setCustomId('volume-plus')
             .setEmoji('🔊')
             .setStyle(ButtonStyle.Secondary);
-        const sourceBTN = new ButtonBuilder()
-            .setLabel('Source')
-            .setURL(track.url)
-            .setEmoji("🎶")
+        const pubBTN = new ButtonBuilder()
+            .setLabel('Powered by KHeberg.fr')
+            .setURL("https://discord.gg/kheberg")
+            .setEmoji("1198622304364675152")
             .setStyle(ButtonStyle.Link);
 
         const row1 = new ActionRowBuilder()
             .addComponents(pauseBTN, playBTN, skipBTN, backBTN, stopBTN);
         
         const row2 = new ActionRowBuilder();
-        if (premium) row2.addComponents(shuffleBTN, loopBTN, volmBTN, volpBTN, sourceBTN);
-        else row2.addComponents(shuffleBTN, loopBTN, sourceBTN);
+        if (premium) row2.addComponents(shuffleBTN, loopBTN, volmBTN, volpBTN, pubBTN);
+        else row2.addComponents(shuffleBTN, loopBTN, pubBTN);
             
 
         try { await queue.metadata.channel.send({embeds: [playembed], components: [row1, row2] }) } catch {};

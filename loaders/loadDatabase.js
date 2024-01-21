@@ -12,12 +12,10 @@ module.exports = async (client) => {
 
     db.connect(function(e) {
         if (e) return console.error(e)
-        console.log("[Data] Base de Données connectée")
     })
 
     setInterval(() => {
         db.query("SELECT 1;")
-        console.log("[Data] Base de Données rafraichit")
     }, 21600000)
 
     return db
