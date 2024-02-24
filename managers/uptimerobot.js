@@ -1,4 +1,4 @@
-module.exports = async (client, app) => {
+module.exports = app => {
     app.get("/", function (req, res) {
   		res.send("hi");
 	});

@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 
-module.exports = async (client) => {
+module.exports = () => {
 
     let db = mysql.createConnection({
         host: process.env.DBhost,

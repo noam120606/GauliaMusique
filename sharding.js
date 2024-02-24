@@ -2,6 +2,15 @@ require('dotenv').config({ path: "./.env" });
 const devbot = process.env.DEVBOT=="1";
 const config = require('./config.json');
 
+const serviceUPTIMEROBOT = require('./managers/uptimerobot');
+const serviceTOPGGVOTE = require('./managers/topgg-vote');
+const loadDatabase = require('./loaders/loadDatabase');
+const db = loadDatabase();
+const app = require('express')();
+serviceUPTIMEROBOT(app);
+serviceTOPGGVOTE(app, db);
+app.listen(process.env.PORT, () => {});
+
 const { ShardingManager } = require('discord.js');
 const manager = new ShardingManager('./main.js', { token: process.env.TOKEN, totalShards: config.shardCount });
 

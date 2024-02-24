@@ -48,7 +48,7 @@ module.exports =  {
                     `<:g_id:1171091474927063120> **ID** : \`${client.user.id}\``,
                     `<:g_slash:1171091726497234944> **Commandes** : \`${client.commands.size}\``,
                     `<:g_refresh:1171091649326235739> **Uptime** : \`${Math.round(client.uptime / (1000 * 60 * 60)) + "h " + (Math.round(client.uptime / (1000 * 60)) % 60) + "m " + (Math.round(client.uptime / 1000) % 60) + "s "}\``,
-                    `<:g_partner:1171091617730531391> **Host** : [KHeberg.fr](https://discord.gg/kheberg)`,
+                    `<:g_partner:1171091617730531391> **Host** : [row-hosting.fr](https://row-hosting.fr)`,
                     `<:g_info:1171091480610353203> **Versions** :`,
                     `gaulia-musique \`${package.version}\``,
                     `Discord.js \`v${version}\``,

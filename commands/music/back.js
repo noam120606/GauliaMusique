@@ -21,7 +21,7 @@ module.exports = {
         if (!memberVC.joinable) return await interaction.followUp("Je n'ai pas la permission de rejoindre ce salon !");
 
         const queue = client.player.queues.get(interaction.guild);
-        if (!queue || !queue.isPlaying()) return await interaction.followUp(`Le bot ne joue pas de musique !`);
+        if (!queue) return await interaction.followUp(`Le bot ne joue pas de musique !`);
         if (!queue.history.previousTrack) return await interaction.followUp(`Il n'y a pas de musiques précédente !`);
 
         await queue.history.back();

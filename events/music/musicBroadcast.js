@@ -63,8 +63,8 @@ module.exports = {
             .setEmoji('🔊')
             .setStyle(ButtonStyle.Secondary);
         const pubBTN = new ButtonBuilder()
-            .setLabel('Powered by KHeberg.fr')
-            .setURL("https://discord.gg/kheberg")
+            .setLabel('Powered by row-hosting.fr')
+            .setURL("https://row-hosting.fr")
             .setEmoji("1198622304364675152")
             .setStyle(ButtonStyle.Link);
 

@@ -1,6 +1,6 @@
 const { readdirSync } = require('fs');
 
-module.exports = async client => {
+module.exports = client => {
     const dirsCommands = readdirSync("./commands/");
     for (const dir of dirsCommands) {
         const filesDirs = readdirSync(`./commands/${dir}/`).filter(f => f.endsWith('.js'));

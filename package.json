@@ -1,9 +1,11 @@
 {
   "dependencies": {
     "@discord-player/extractor": "^4.4.6",
+    "@discordjs/core": "^1.1.1",
     "@top-gg/sdk": "^3.1.6",
     "axios": "^1.6.5",
     "cpu-stat": "^2.0.1",
+    "discord-live-stats": "^1.0.4",
     "discord-player": "^6.6.7",
     "discord.js": "^14.14.1",
     "disstat": "^1.0.0",
@@ -17,13 +19,11 @@
     "play-dl": "^1.9.7",
     "puppeteer": "^21.7.0",
     "spotify-url-info": "^3.2.10",
-    "topgg-autoposter": "^2.0.1",
-    "discord-live-stats": "^1.0.4"
+    "topgg-autoposter": "^2.0.1"
   },
   "name": "gaulia-musique",
   "version": "1.0.5",
   "main": "sharding.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
