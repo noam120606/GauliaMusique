@@ -39,7 +39,7 @@ module.exports = {
                     volume: 70,
                     leaveOnStop: true,
                     leaveOnEmpty: true,
-                    leaveOnEnd: false,
+                    leaveOnEnd: true,
                     selfDeaf: true,
                     maxHistorySize: QueueLimit,
                     maxSize: QueueLimit

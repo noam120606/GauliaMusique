@@ -5,10 +5,9 @@ const config = require('./config.json');
 const serviceUPTIMEROBOT = require('./managers/uptimerobot');
 const serviceTOPGGVOTE = require('./managers/topgg-vote');
 const loadDatabase = require('./loaders/loadDatabase');
-const db = loadDatabase();
 const app = require('express')();
 serviceUPTIMEROBOT(app);
-serviceTOPGGVOTE(app, db);
+serviceTOPGGVOTE(app, loadDatabase());
 app.listen(process.env.PORT, () => {});
 
 const { ShardingManager } = require('discord.js');
