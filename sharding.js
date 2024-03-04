@@ -1,6 +1,6 @@
 require('dotenv').config({ path: "./.env" });
 const devbot = process.env.DEVBOT=="1";
-const config = require('./config.json');
+const config = require('./config');
 
 const serviceUPTIMEROBOT = require('./managers/uptimerobot');
 const serviceTOPGGVOTE = require('./managers/topgg-vote');

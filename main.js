@@ -10,22 +10,16 @@ const { Client, IntentsBitField, Collection } = require('discord.js');
 const client = new Client({ intents: new IntentsBitField(process.env.INTENTS) });
 const Stats = require('discord-live-stats');
 client.dev = process.env.DEVBOT=="1";
+client.commands = new Collection();
+client.interactions = new Collection();
+client.config = require('./config');
+client.player = new Player(client, client.config.playerOptions);
+client.player.extractors.loadDefault();
+client.player.blindtestdata = {};
 if (!client.dev) new Stats.Client(client, {
     stats_uri: 'http://gaulia-stats.noam120606.fr:20003/',
     authorizationkey: process.env.STATSAUTH,
 });
-client.commands = new Collection();
-client.interactions = new Collection();
-client.config = require('./config.json');
-client.player = new Player(client, {
-    ytdlOptions: {
-        filter: "audioonly",
-        quality: "highestaudio",
-        highWaterMark: 1 << 25
-    }
-});
-client.player.extractors.loadDefault();
-client.player.blindtestdata = {};
 
 client.db = loadDatabase();
 loadCommands(client);
