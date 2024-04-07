@@ -16,6 +16,7 @@ module.exports = {
 
                 if (command.premium && !(await isPremium(client, interaction.guild.id))) return await requirePremium(interaction);
                 else await command.run(interaction);
+		console.log(`Commande ${interaction.commandName}; User ${interaction.user.id}; Premium ${command.premium}`);
 
             break;
 
